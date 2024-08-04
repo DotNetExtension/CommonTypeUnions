@@ -12,6 +12,15 @@ This library contains a set of commonly used type unions.
 Type unions are an upcoming feature that is [proposed](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md) for a future version of C#.
 We try our best to keep the types in this library as close as possible to the proposal as possible to make a transition to future Type Unions as easy as possible.
 
+# Getting Started
+
+You can get started using these types by simply installing the [CommonTypeUnions](https://www.nuget.org/packages/CommonTypeUnions/) package from nuget.
+
+Alternatively you can install it using the `dotnet` cli:
+```powershell
+dotnet add package CommonTypeUnions --version 1.0.0
+```
+
 # Option&lt;TValue&gt;
 
 Option is a struct union found in many languages, it can either represent a value that is something (`Some`) or nothing (`None`).
