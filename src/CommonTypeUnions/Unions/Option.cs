@@ -40,13 +40,21 @@ public readonly struct Option<TValue>
         None = 2
     };
 
-    private Option(Some<TValue> value)
+    /// <summary>
+    /// Creates a <see cref="Option{TValue}"/> using <see cref="Some{TValue}"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="Some{TValue}"/>.</param>
+    public Option(Some<TValue> value)
     {
         Kind = UnionKind.Some;
         _some = value;
     }
 
-    private Option(None value)
+    /// <summary>
+    /// Creates a <see cref="Option{TValue}"/> using <see cref="None"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="None"/>.</param>
+    public Option(None value)
     {
         Kind = UnionKind.None;
         _none = value;

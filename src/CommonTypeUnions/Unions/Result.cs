@@ -41,13 +41,21 @@ public readonly struct Result<TValue, TError>
         Failure = 2
     };
 
-    private Result(Success<TValue> value)
+    /// <summary>
+    /// Creates a <see cref="Result{TValue, TError}"/> using a <see cref="Success{TValue}"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="Success{TValue}"/>.</param>
+    public Result(Success<TValue> value)
     {
         Kind = UnionKind.Success;
         _success = value;
     }
 
-    private Result(Failure<TError> value)
+    /// <summary>
+    /// Creates a <see cref="Result{TValue, TError}"/> using a <see cref="Failure{TError}"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="Failure{TError}"/>.</param>
+    public Result(Failure<TError> value)
     {
         Kind = UnionKind.Failure;
         _failure = value;
