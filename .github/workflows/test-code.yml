@@ -1,0 +1,29 @@
+name: Test Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-code:
+    name: Test Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: zyactions/dotnet-setup@v1
+        with:
+          global-json-file: global.json
+
+      - name: Restore .NET dependencies
+        uses: zyactions/dotnet-restore@v1
+
+      - name: Test solution
+        run: dotnet test

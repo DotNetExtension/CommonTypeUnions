@@ -1,0 +1,47 @@
+name: Release Project
+
+on:
+  release:
+    types: [prereleased,released]
+
+jobs:
+  release:
+    name: Release Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Build changelog
+        id: changelog
+        uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          toTag: ${{ github.event.release.tag_name }}
+          commitMode: true
+          configuration: .github/changelog.json
+
+      - name: Set up .NET
+        uses: zyactions/dotnet-setup@v1
+        with:
+          global-json-file: global.json
+
+      - name: Restore .NET dependencies
+        uses: zyactions/dotnet-restore@v1
+
+      - name: Pack solution
+        run: dotnet pack -c Release -p:Version=${{ github.event.release.tag_name }} -o bin/release
+
+      - name: Push Packages
+        run: dotnet nuget push 'bin/release/*.*' --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Update release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.event.release.tag_name }}
+          allowUpdates: true
+          prerelease: ${{ github.event.release.prerelease }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          artifacts: bin/release/*.*
