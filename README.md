@@ -13,7 +13,7 @@ You can get started using these types by simply installing the [CommonTypeUnions
 
 Alternatively you can install it using the `dotnet` cli:
 ```powershell
-dotnet add package CommonTypeUnions --version 1.0.0
+dotnet add package CommonTypeUnions --version 1.0.2
 ```
 
 # Option&lt;TValue&gt;
