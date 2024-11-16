@@ -4,13 +4,8 @@
 
 # Common Union Types
 > [!WARNING]
-> Type Unions are in the early proposal stage and will likely see changes as time goes on, we plan to keep up with these changes as
+> Type Unions are in the early [proposed](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md) stage and will likely see changes as time goes on, we plan to keep up with these changes as
 > much as possible to ensure the easiest migration path once type unions make it into a stable .net version.
-
-This library contains a set of commonly used type unions.
-
-Type unions are an upcoming feature that is [proposed](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md) for a future version of C#.
-We try our best to keep the types in this library as close as possible to the proposal as possible to make a transition to future Type Unions as easy as possible.
 
 # Getting Started
 
@@ -18,7 +13,7 @@ You can get started using these types by simply installing the [CommonTypeUnions
 
 Alternatively you can install it using the `dotnet` cli:
 ```powershell
-dotnet add package CommonTypeUnions --version 1.0.0
+dotnet add package CommonTypeUnions --version 1.0.2
 ```
 
 # Option&lt;TValue&gt;
